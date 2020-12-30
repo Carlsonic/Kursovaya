@@ -17,11 +17,19 @@ namespace kursovaya_rabota
             InitializeComponent();
             mapa.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
 
-            
+            doit();
 
             mapa.MinZoom = 5;
             mapa.MaxZoom = 100;
             mapa.Zoom = 10;
+        }
+
+        public void doit()
+        {
+            double lat = Convert.ToDouble(txtlat.Text);
+            double lon = Convert.ToDouble(txtlon.Text);
+            mapa.Position = new GMap.NET.PointLatLng(lat, lon);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,6 +38,21 @@ namespace kursovaya_rabota
         }
 
         private void mapa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            doit();
+        }
+
+        private void filteroption1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filteroption2_Click(object sender, EventArgs e)
         {
 
         }
