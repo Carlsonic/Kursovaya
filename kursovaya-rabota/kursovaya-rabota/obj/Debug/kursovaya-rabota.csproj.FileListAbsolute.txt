@@ -22,3 +22,5 @@ D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\obj\Debug\kursovaya-rabota.csproj
 D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\obj\Debug\kursovaya-rabota.csproj.CopyComplete
 D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\obj\Debug\kursovaya-rabota.exe
 D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\obj\Debug\kursovaya-rabota.pdb
+D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\bin\Debug\RestSharp.dll
+D:\Kursovaya\kursovaya-rabota\kursovaya-rabota\bin\Debug\RestSharp.xml

@@ -12,9 +12,13 @@ namespace kursovaya_rabota
 {
     public partial class Form1 : Form
     {
+        Client client = new Client();
         public Form1()
         {
+            client.LoadEventData();
+
             InitializeComponent();
+
             mapa.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
 
             doit();
