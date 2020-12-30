@@ -15,11 +15,23 @@ namespace kursovaya_rabota
         public Form1()
         {
             InitializeComponent();
+            mapa.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+
+            
+
+            mapa.MinZoom = 5;
+            mapa.MaxZoom = 100;
+            mapa.Zoom = 10;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Проект создан");
+            
+        }
+
+        private void mapa_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
