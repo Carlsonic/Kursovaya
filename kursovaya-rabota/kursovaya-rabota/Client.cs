@@ -14,6 +14,7 @@ namespace kursovaya_rabota
         const string eventinfo = "v4/artists/{0}/events/?app_id=680fa1fdd5376382ae7efea0076bb7ff";
 
         RestClient client = null;
+        Jsonparser Jsonparser = new Jsonparser();
 
         public Client()
         {
@@ -30,8 +31,8 @@ namespace kursovaya_rabota
             var response = client.Execute(request);
             string result = response.Content;
 
-
-            return new List<Data>();
+            return Jsonparser.Parsedata(result);
+           
         }
     }
 }
