@@ -26,7 +26,7 @@ namespace kursovayaWPF
             this.Country = venue.country;
             this.EventName = venue.name;
             this.MarkerCoord = new PointLatLng(Convert.ToDouble(venue.latitude, CultureInfo.InvariantCulture), Convert.ToDouble(venue.longitude, CultureInfo.InvariantCulture));
-            this.Description = description;
+            this.Description  = (description == "") ? "нет описания" : description;
             this.Date = date;
         }
     }

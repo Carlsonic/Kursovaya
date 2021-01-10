@@ -27,20 +27,11 @@ namespace kursovayaWPF
     public partial class MainWindow : Window
     {
         List<Detail> info = new List<Detail>();
-
+        List<GMapMarker> spisokmarkerov = new List<GMapMarker>();
         Client client = new Client();
         public MainWindow()
         {
-
-            client.LoadEventData();
-
             InitializeComponent();
-
-           
-
-            doit();
-
-            
         }
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
@@ -63,12 +54,10 @@ namespace kursovayaWPF
             Map.DragButton = MouseButton.Left;
         }
 
-        
-
-        GMapMarker CreatMarker(float lat, float lng, string info)
+        GMapMarker CreatMarker(PointLatLng markercoord, string info)
         {
-            PointLatLng EventLocation = new PointLatLng(lat, lng);
-            return new GMapMarker(EventLocation)
+            
+            return new GMapMarker(markercoord)
             {
                 Shape = new Image
                 {
@@ -81,11 +70,34 @@ namespace kursovayaWPF
         }
         public void doit()
         {
-            info = client.LoadEventData();//вставить имя артиста
-            CreatMarker(11, 11, "");
+            foreach (GMapMarker removablemarker in spisokmarkerov)
+            {
+                Map.Markers.Remove(removablemarker);
+            }
+
+                info = client.LoadEventData(namebox.Text);//вставить имя артиста
+            // по count
+            
+
+            for (int i = 0; i < info.Count; i++)
+            {
+                GMapMarker Marker = CreatMarker(info[i].MarkerCoord, info[i].EventName);
+
+                Map.Markers.Add(Marker);
+
+                spisokmarkerov.Add(Marker);
+            }
+
+            
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            doit();
+        }
+
+        private void namebox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

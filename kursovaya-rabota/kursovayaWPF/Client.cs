@@ -22,7 +22,7 @@ namespace kursovayaWPF
                 client.Timeout = -1;
             }
 
-            public List<Detail> LoadEventData(string artist = "Grandson")
+            public List<Detail> LoadEventData(string artist)
             {
 
                 string uri = string.Format(eventinfo, artist);
