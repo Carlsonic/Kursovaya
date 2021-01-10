@@ -46,11 +46,11 @@ namespace kursovayaWPF
 
             Map.MapProvider = YandexMapProvider.Instance;
 
-            Map.MinZoom = 2;
-            Map.MaxZoom = 17;
+            Map.MinZoom = 3;
+            Map.MaxZoom = 20;
             Map.Zoom = 15;
 
-            Map.Position = new PointLatLng(55.012823, 82.950359);
+            Map.Position = new PointLatLng(11, 11);
 
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
