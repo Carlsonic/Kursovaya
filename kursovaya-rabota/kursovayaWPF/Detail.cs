@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace kursovayaWPF
 {
-    class Detail
+    public class Detail
     {
         public Artist Artist { get; set; }
         public Venue Venue { get; set; }
@@ -26,7 +26,7 @@ namespace kursovayaWPF
             this.Country = venue.country;
             this.EventName = venue.name;
             this.MarkerCoord = new PointLatLng(Convert.ToDouble(venue.latitude, CultureInfo.InvariantCulture), Convert.ToDouble(venue.longitude, CultureInfo.InvariantCulture));
-            this.Description  = (description == "") ? "нет описания" : description;
+            this.Description  = (description == "") ? "Без описания" : description;
             this.Date = date;
         }
     }

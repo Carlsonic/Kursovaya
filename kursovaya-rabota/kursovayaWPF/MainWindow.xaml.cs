@@ -27,28 +27,31 @@ namespace kursovayaWPF
     public partial class MainWindow : Window
     {
         List<Detail> info = new List<Detail>();
-        List<GMapMarker> spisokmarkerov = new List<GMapMarker>();
         Client client = new Client();
+
+        List<string> spisokartistov = new List<string>() {
+            "Avatar", "Usher", "Blue Water Highway", "Street Kult", "Hearty Har", "Milky Chance", "311", "Pinegrove",
+            "The Revivalists", "Jimmy Eat World", "Leprous", "Disciple", "Steelheart", "Nightwish", "BTS", "O-Town",
+
+            };
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
-            // настройка доступа к данным
             GMaps.Instance.Mode = AccessMode.ServerAndCache;
 
-            // установка провайдера карт
             Map.MapProvider = YandexMapProvider.Instance;
 
-            // установка зума карты
             Map.MinZoom = 2;
             Map.MaxZoom = 17;
             Map.Zoom = 15;
-            // установка фокуса карты
+
             Map.Position = new PointLatLng(55.012823, 82.950359);
 
-            // настройка взаимодействия с картой
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
             Map.DragButton = MouseButton.Left;
@@ -68,38 +71,71 @@ namespace kursovayaWPF
                 }
             };
         }
-        public void doit()
+
+        public void ArtistAdd(Detail arr)
         {
-            foreach (GMapMarker removablemarker in spisokmarkerov)
-            {
-                Map.Markers.Remove(removablemarker);
-            }
-
-                info = client.LoadEventData(namebox.Text);//вставить имя артиста
-            // по count
             
-
-            for (int i = 0; i < info.Count; i++)
-            {
-                GMapMarker Marker = CreatMarker(info[i].MarkerCoord, info[i].EventName);
+                GMapMarker Marker = CreatMarker(arr.MarkerCoord,
+                    arr.EventName + '\n' + arr.Description + '\n' + "В городе " + arr.City + ", " + arr.Country + '\n' + "Запланировано " + arr.Date);
 
                 Map.Markers.Add(Marker);
-
-                spisokmarkerov.Add(Marker);
-            }
-
-            
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            doit();
+            Map.Markers.Clear();
+            string artname = namebox.Text;
+            new Thread(() => {
+                info = client.LoadEventData(artname);
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    for (int i = 0; i < info.Count;i++)
+                        ArtistAdd(info[i]);
+                });
+
+            }).Start();
         }
 
-        private void namebox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Map.Markers.Clear();
+            new Thread(() =>
+            {
+                foreach (string i in spisokartistov)
+                {
+                    info = client.LoadEventData(i);
+                    if (info == null)
+                        continue;
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        for (int j = 0; j < info.Count; j++)
+                            if (option1.Text.ToString() == info[j].Country)
+                                ArtistAdd(info[j]);
+                    });
+                }
+            }).Start();
+            
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Map.Markers.Clear();
+            new Thread(() =>
+            {
+            foreach (string i in spisokartistov)
+            {
+                info = client.LoadEventData(i);
+                if (info == null)
+                    continue;
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+
+                        for (int j = 0; j < info.Count; j++)
+                            if (_1.SelectedDate.Value < info[j].Date && _2.SelectedDate.Value > info[j].Date)
+                                ArtistAdd(info[j]);
+                    });
+            }
+            }).Start();
         }
     }
 }
