@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using GMap.NET;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
+using GMap.NET.WindowsForms;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms.Markers;
 
 namespace kursovaya_rabota
 {
@@ -19,13 +21,14 @@ namespace kursovaya_rabota
 
             InitializeComponent();
 
-            mapa.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            mapa.MapProvider = GoogleMapProvider.Instance;
 
             doit();
 
             mapa.MinZoom = 5;
             mapa.MaxZoom = 100;
             mapa.Zoom = 10;
+
         }
 
         public void doit()
@@ -60,5 +63,15 @@ namespace kursovaya_rabota
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        PointLatLng point = new PointLatLng(11, 11);
+        Bitmap bmpmarker = (Bitmap)Image.FromFile("D:\\Kursovaya\\kursovaya-rabota\\kursovaya-rabota\\imag\\metka.png");
+        GMapMarker marker = new GMarkerGoogle(point, bmpmarker);
+            
+        }
+
+
     }
 }

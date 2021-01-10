@@ -22,16 +22,16 @@ namespace kursovaya_rabota
             client.Timeout = -1;
         }
 
-        public List<Data> LoadEventData(string artist = "Grandson")
+        public List<Detail> LoadEventData(string artist = "Grandson")
         {
 
             string uri = string.Format(eventinfo, artist);
 
             var request = new RestRequest(uri, Method.GET);
             var response = client.Execute(request);
-            string result = response.Content;
+            string apiresult = response.Content;
 
-            return Jsonparser.Parsedata(result);
+            return Jsonparser.Parsedata(apiresult);
            
         }
     }

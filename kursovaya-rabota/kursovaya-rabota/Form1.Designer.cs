@@ -41,6 +41,7 @@ namespace kursovaya_rabota
             this.btn = new System.Windows.Forms.Button();
             this.txtlat = new System.Windows.Forms.TextBox();
             this.txtlon = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Sidemenu.SuspendLayout();
             this.filterlist.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +79,7 @@ namespace kursovaya_rabota
             // Sidemenu
             // 
             this.Sidemenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(9)))), ((int)(((byte)(48)))));
+            this.Sidemenu.Controls.Add(this.textBox1);
             this.Sidemenu.Controls.Add(this.button1);
             this.Sidemenu.Controls.Add(this.filterlist);
             this.Sidemenu.Controls.Add(this.filterbutton);
@@ -107,6 +109,7 @@ namespace kursovaya_rabota
             this.button1.Text = "Кнопка";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // filterlist
             // 
@@ -209,6 +212,13 @@ namespace kursovaya_rabota
             this.txtlon.TabIndex = 4;
             this.txtlon.Text = "0";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(0, 243);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 20);
+            this.textBox1.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +249,7 @@ namespace kursovaya_rabota
         private System.Windows.Forms.Button btn;
         private System.Windows.Forms.TextBox txtlat;
         private System.Windows.Forms.TextBox txtlon;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
