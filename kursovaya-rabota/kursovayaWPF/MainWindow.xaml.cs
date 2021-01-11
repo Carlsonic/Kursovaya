@@ -89,8 +89,18 @@ namespace kursovayaWPF
                 info = client.LoadEventData(artname);
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    for (int i = 0; i < info.Count;i++)
-                        ArtistAdd(info[i]);
+                    if (option1.Text.ToString() == "All")
+                    {
+                        for (int i = 0; i < info.Count; i++)
+                            if (_1.SelectedDate.Value < info[i].Date && _2.SelectedDate.Value > info[i].Date)
+                                ArtistAdd(info[i]);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < info.Count; i++)
+                            if (option1.Text.ToString() == info[i].Country && _1.SelectedDate.Value < info[i].Date && _2.SelectedDate.Value > info[i].Date)
+                                ArtistAdd(info[i]);
+                    }
                 });
 
             }).Start();
@@ -99,23 +109,31 @@ namespace kursovayaWPF
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Map.Markers.Clear();
-            new Thread(() =>
+            if (option1.Text.ToString() != "All")
             {
-                foreach (string i in spisokartistov)
+                new Thread(() =>
+            {
+
                 {
-                    info = client.LoadEventData(i);
-                    if (info == null)
-                        continue;
-                    Application.Current.Dispatcher.Invoke(() =>
+                    foreach (string i in spisokartistov)
                     {
-                        for (int j = 0; j < info.Count; j++)
-                            if (option1.Text.ToString() == info[j].Country)
-                                ArtistAdd(info[j]);
-                    });
+                        info = client.LoadEventData(i);
+                        if (info == null)
+                            continue;
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+
+                            for (int j = 0; j < info.Count; j++)
+                                if (option1.Text.ToString() == info[j].Country)
+                                    ArtistAdd(info[j]);
+                        });
+                    }
                 }
+
             }).Start();
-            
-        }
+            }
+            else MessageBox.Show("Выберите страну");
+            }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -137,5 +155,7 @@ namespace kursovayaWPF
             }
             }).Start();
         }
+
+        
     }
 }
