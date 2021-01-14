@@ -117,11 +117,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="imag\metka.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="imag\metka.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

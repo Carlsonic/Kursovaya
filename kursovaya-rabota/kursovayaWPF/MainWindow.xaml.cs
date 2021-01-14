@@ -67,7 +67,7 @@ namespace kursovayaWPF
                     Width = 40,
                     Height = 40,
                     ToolTip = info,
-                    Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
+                    Source = new BitmapImage(new Uri("https://icon-library.com/images/map-marker-icon-png/map-marker-icon-png-15.jpg"))
                 }
             };
         }

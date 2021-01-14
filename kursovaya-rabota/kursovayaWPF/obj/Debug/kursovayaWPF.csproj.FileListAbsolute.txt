@@ -1,4 +1,3 @@
-D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.csprojAssemblyReference.cache
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\MainWindow.g.cs
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\App.g.cs
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF_MarkupCompile.cache
@@ -20,3 +19,4 @@ D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.csproj.CoreCom
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.csproj.CopyComplete
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.exe
 D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.pdb
+D:\Kursovaya\kursovaya-rabota\kursovayaWPF\obj\Debug\kursovayaWPF.csprojAssemblyReference.cache
